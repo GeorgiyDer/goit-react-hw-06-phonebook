@@ -12,7 +12,7 @@ const ContactListItem = ({ name, number, id }) => {
     </StyledLi>
   );
 };
-
+ 
 ContactListItem.propTypes = {
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
