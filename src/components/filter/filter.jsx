@@ -1,16 +1,19 @@
+import { useSelector, useDispatch } from 'react-redux'
+import { filterContact } from 'redax/filter.slice';
 import React from 'react'
-import PropTypes from 'prop-types';
-import {StyledLable, StyledInput} from './filter.styled'
+import { StyledLable, StyledInput } from './filter.styled'
 
-const Filter = ({value, onFilter}) => ( 
-    <StyledLable>Find contacts by name
-        <StyledInput type="text" value={value} onChange={onFilter} />
-    </StyledLable>
-)
 
-Filter.propTypes = {
-    value: PropTypes.string.isRequired,
-    onFilter: PropTypes.func.isRequired,
-};
+const Filter = () => {
+    const dispatch = useDispatch();
+    const filter = useSelector(state => state.filter)
+
+    return (
+        <StyledLable>Find contacts by name
+            <StyledInput type="text" value={filter} onChange={(e) => dispatch(filterContact(e.target.value))} />
+        </StyledLable>
+    )
+}
+
 
 export default Filter;
